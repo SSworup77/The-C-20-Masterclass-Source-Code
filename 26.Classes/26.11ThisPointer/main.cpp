@@ -1,15 +1,16 @@
 #include <iostream>
+using namespace std;
 
 
 class Dog{
     public : 
         Dog() = default;
-        Dog(std::string_view name_param, std::string_view breed_param, int  age_param);
+        Dog(string_view name_param, string_view breed_param, int  age_param);
         ~Dog();
 
         void print_info(){
-            std::cout << "Dog (" << this << ") : [ name : " << name 
-                << " breed : " << breed << " age : " << *p_age << "]" << std::endl;
+            cout << "Dog (" << this << ") : [ name : " << name 
+                << " breed : " << breed << " age : " << *p_age << "]" << endl;
         }
 
         //Setters
@@ -32,12 +33,12 @@ class Dog{
         */
 
        //Chained calls using references
-        Dog& set_dog_name(std::string_view name){
+        Dog& set_dog_name(string_view name){
             //name = name; // This does nothing
             this->name = name;
             return *this;
         }
-        Dog& set_dog_breed(std::string_view breed){
+        Dog& set_dog_breed(string_view breed){
             this->breed = breed;
             return *this;
         }
@@ -48,21 +49,21 @@ class Dog{
         }
 
     private : 
-        std::string name;
-        std::string breed;
+        string name;
+        string breed;
         int * p_age{nullptr};
 };
-Dog::Dog(std::string_view name_param, std::string_view breed_param, int  age_param){
+Dog::Dog(string_view name_param, string_view breed_param, int  age_param){
     name = name_param;
     breed = breed_param;
     p_age = new int;
     *p_age = age_param;
-    std::cout << "Dog constructor called for " << name << " at " << this << std::endl;
+    cout << "Dog constructor called for " << name << " at " << this << endl;
 }
 
 Dog::~Dog(){
     delete p_age;
-    std::cout << "Dog destructor called for " << name << " at " << this <<  std::endl;
+    cout << "Dog destructor called for " << name << " at " << this <<  endl;
 }
 
 int main(){
@@ -86,7 +87,7 @@ int main(){
     dog1.print_info();
    
 
-    std::cout << "Done!" << std::endl;
+    cout << "Done!" << endl;
    //Destructor
     return 0;
 }
